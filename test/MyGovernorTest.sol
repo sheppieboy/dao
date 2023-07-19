@@ -42,4 +42,9 @@ contract MyGovernorTest is Test {
         box = new Box();
         box.transferOwnership(address(timelock));
     }
+
+    function testCantUpdateBoxWithoutGovernor() public {
+        vm.expectRevert();
+        box.store(1);
+    }
 }
